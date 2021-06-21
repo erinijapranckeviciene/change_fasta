@@ -3,6 +3,7 @@
 # call bash change-fasta.sh
 # seq file seq.tab
 >regions.bed
+>changed.fasta
 
 # hg38 fasta location
 hg38fa=/projects/bcbio/v1.2.0/genomes/Hsapiens/hg38/seq/hg38.fa
@@ -56,5 +57,6 @@ echo ""
  echo ""
  echo changed fasta
  sed -n "${line}p" seq.tab | sed "s/${subseq}/${changedStr}/" | grep --color "${changedStr}"
+ sed -n "${line}p" seq.tab | sed "s/${subseq}/${changedStr}/" >> changed.fasta
 
 done
